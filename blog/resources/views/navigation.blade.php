@@ -14,6 +14,19 @@
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Link</a></li>
+						<li><a href="#">Link</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					@if ($user = Auth::user())
+						<li><a href="/user">@ {{ $user->name }}</a></li>
+						<li><a href="/logout">Logout</a></li>
+					@else
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Register</a></li>
+					@endif
+					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
 		</nav>
