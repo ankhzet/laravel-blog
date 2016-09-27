@@ -1,5 +1,7 @@
 <?php
 
-Route::get('/', function () {
-    return view('index');
+Route::group(['middleware' => ['web']], function () {
+	Route::any('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
 });
+

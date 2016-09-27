@@ -37,8 +37,19 @@
 			</div>
 		@endif
 
+		@include('navigation')
+
+		<div class="container">
+			<div class="row">
+				<main class="col-sm-8" role="main">
 					@section('content')
 					@show
+				</main>
+				<nav class="col-sm-3 col-sm-offset-1" role="sidebar">
+					@include('sidebar')
+				</nav>
+			</div>
+		</div>
 
 		{!! asset_link('jquery.js') !!}
 		{!! asset_link('bootstrap.js') !!}
