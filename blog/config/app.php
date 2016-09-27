@@ -180,6 +180,8 @@ return [
         Blog\Providers\EventServiceProvider::class,
         Blog\Providers\RouteServiceProvider::class,
 
+        Serafim\Asset\AssetServiceProvider::class,
+
     ], (!$isDebug) ? [] : [
         /*
          * Debug services
@@ -234,6 +236,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
+        'Asset' => Serafim\Asset\Facade::class,
     ],
 
 ];
