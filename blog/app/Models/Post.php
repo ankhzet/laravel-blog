@@ -13,4 +13,8 @@ class Post extends OwnedEntity {
 		'title', 'content'
 	];
 
+	public function comments() {
+		return $this->hasMany(Comment::class, 'post_id');
+	}
+
 }

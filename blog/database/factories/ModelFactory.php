@@ -17,3 +17,10 @@ $factory->define(Blog\Post::class, function (Faker\Generator $faker, array $data
 	];
 });
 
+$factory->define(Blog\Comment::class, function (Faker\Generator $faker, array $data) {
+	return [
+		'post_id' => $data['post_id'] ?? 0,
+		'user_id' => $data['user_id'] ?? 0,
+		'content' => $faker->text(500),
+	];
+});
