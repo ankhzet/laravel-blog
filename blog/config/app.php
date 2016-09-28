@@ -181,6 +181,9 @@ return [
         Blog\Providers\RouteServiceProvider::class,
 
         Serafim\Asset\AssetServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
+        Blog\Providers\BladeServiceProvider::class,
 
     ], (!$isDebug) ? [] : [
         /*
@@ -237,6 +240,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 
+        'Form' => Collective\Html\FormFacade::class,
         'Asset' => Serafim\Asset\Facade::class,
     ],
 

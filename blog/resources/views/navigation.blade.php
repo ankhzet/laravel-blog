@@ -15,16 +15,13 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Link</a></li>
-						<li><a href="#">Link</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					@if ($user = Auth::user())
-						<li><a href="/user">@ {{ $user->name }}</a></li>
-						<li><a href="/logout">Logout</a></li>
+							<li><a href="{{ route('users.show', $user) }}">@ {{ $user->name }}</a></li>
+						<li><a href="{{ route('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					@else
-						<li><a href="/login">Login</a></li>
-						<li><a href="/register">Register</a></li>
+						<li><a href="{{ route('users.login-form') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					@endif
 					</ul>
 				</div><!-- /.navbar-collapse -->
