@@ -26,4 +26,12 @@ class User extends Authenticatable {
 		'password', 'remember_token',
 	];
 
+	public function posts() {
+		return $this->hasMany(Post::class, 'user_id');
+	}
+
+	public function isModerator() {
+		return $this-> id == 1;
+	}
+
 }
