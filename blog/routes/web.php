@@ -1,6 +1,6 @@
 <?php
 
-	Route::any('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+	Route::any('/', ['as' => 'home', 'uses' => 'PostsController@index']);
 
 	// users
 	Route::get('/login', ['as' => 'users.login-form', 'uses' => 'Auth\LoginController@showLoginForm']);
