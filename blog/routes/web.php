@@ -14,3 +14,10 @@
 	// posts
 	Route::resource('posts', 'PostsController');
 	Route::get('posts/{post}/delete', ['as' => 'posts.destroy', 'uses' => 'PostsController@destroy']);
+
+	// comments
+	Route::resource('posts.comments', 'CommentsController');
+	Route::get('comments/{comment}/delete', ['as' => 'comments.destroy', 'uses' => 'CommentsController@destroy']);
+
+	Route::get('posts/{post}#comments', ['as' => 'comments.index', 'uses' => 'PostsController@show']);
+	Route::get('posts/{post}#comment{comment}', ['as' => 'comments.show', 'uses' => 'PostsController@show']);
