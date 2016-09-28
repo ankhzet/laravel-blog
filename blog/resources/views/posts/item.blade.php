@@ -42,6 +42,22 @@
 						</a>
 					</div>
 
+					{{-- Moderator links in the same row as 'By:' --}}
+					@if ($post->mutableBy(\Auth::user()))
+						<div class="col-sm-4 col-xs-5">
+							<div class="pull-right">
+							<a href="{{ route('posts.edit', $post) }}">
+								<span class="glyphicon glyphicon-edit"></span>
+								Edit
+							</a>
+							<a class="text-danger" href="{{ route('posts.destroy', $post) }}">
+								<span class="glyphicon glyphicon-remove"></span>
+								Delete
+							</a>
+							</div>
+						</div>
+					@endif
+
 				</div> {{-- .row --}}
 
 			</div> {{-- .panel-footer --}}

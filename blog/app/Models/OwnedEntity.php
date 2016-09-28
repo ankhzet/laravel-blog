@@ -9,7 +9,7 @@ class OwnedEntity extends Entity {
 	}
 
 	public function mutableBy(User $user = null) {
-		return $user && (($user->id == $this->user_id));
+		return $user && (($user->id == $this->user_id) || $user->isModerator());
 	}
 
 }
