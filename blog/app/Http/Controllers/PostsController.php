@@ -84,6 +84,10 @@ class PostsController extends Controller {
 	 */
 	public function destroy(DeleteRequest $request) {
 		$post = $request->candidate();
+		// as post aren't really physically deleted,
+		// we don't delete it's comments either.
+
+		// $post->comments->delete();
 
 		return $post->delete()
 			? $this->innerRedirect('index')

@@ -60,6 +60,21 @@
 
 				</div> {{-- .row --}}
 
+				{{-- 'Comments: number' row if any comments present --}}
+				@if (!($detailed ?? false))
+					@if ($comments = $post->comments->count())
+						<div class="row">
+							<div class="col-sm-12">
+								<span class="glyphicon glyphicon-comment"></span>
+								&nbsp; Comments:
+								<a href="{{ route('comments.index', $post) }}">
+									{{ $comments }}
+								</a>
+							</div>
+						</div>
+					@endif
+				@endif
+
 			</div> {{-- .panel-footer --}}
 		</div> {{-- .panel --}}
 	</div> {{-- .post --}}
