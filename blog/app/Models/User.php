@@ -28,6 +28,14 @@ class User extends Authenticatable {
 		'password', 'remember_token',
 	];
 
+	public function delete() {
+		return $this->posts()->delete() && parent::delete();
+	}
+
+	public function restore() {
+		return $this->posts()->restore() && parent::restore();
+	}
+
 	public function posts() {
 		return $this->hasMany(Post::class, 'user_id');
 	}
