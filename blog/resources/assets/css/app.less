@@ -1,0 +1,27 @@
+
+// Bootstrap
+@import("bootstrap");
+
+@fixed-nav-height: 80px;
+
+body {
+	padding-top: @fixed-nav-height;
+}
+
+a.anchor-offsetted {
+	position: absolute;
+	margin-top: -(@fixed-nav-height - 20px);
+}
+
+.post {
+	.content {
+		white-space: pre-wrap;
+	}
+}
+
+.comment {
+	.content {
+		white-space: pre-wrap;
+	}
+}
+
