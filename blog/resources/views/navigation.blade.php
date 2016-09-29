@@ -39,6 +39,7 @@
 						<li><a href="{{ route('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					@else
 						<li><a href="{{ route('users.login-form') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li><a href="{{ route('users.registration-form') }}">Register</a></li>
 					@endif
 					</ul>
 				</div><!-- /.navbar-collapse -->

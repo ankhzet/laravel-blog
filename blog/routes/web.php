@@ -6,6 +6,8 @@
 	Route::get('/login', ['as' => 'users.login-form', 'uses' => 'Auth\LoginController@showLoginForm']);
 	Route::post('/login', ['as' => 'users.login', 'uses' => 'Auth\LoginController@login']);
 	Route::get('/logout', ['as' => 'users.logout', 'uses' => 'Auth\LoginController@logout']);
+	Route::get('/registration', ['as' => 'users.registration-form', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
+	Route::post('/registration', ['as' => 'users.register', 'uses' => 'Auth\RegisterController@register']);
 
 
 	Route::get('admin/login', ['as' => 'users.admin-login-form', 'uses' => 'Auth\LoginController@showAdminLoginForm']);
