@@ -48,11 +48,18 @@ class RegisterController extends Controller {
      * @return User
      */
     protected function create(array $data) {
-        return User::create([
+        $admin = $this->shouldBeAdmin($data);
+        return User::forceCreate([
+            'is_admin' => $admin,
+            'is_moderator' => $admin,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    protected function shouldBeAdmin(array $data) {
+        return !User::count();
     }
 
 }

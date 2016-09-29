@@ -13,6 +13,8 @@ class UsersTableSeeder extends Seeder {
 		$admin = [
 			'name' => 'Admin',
 			'email' => 'admin@example.com',
+			'is_admin' => true,
+			'is_moderator' => true,
 			'password' => bcrypt('secret'),
 		];
 

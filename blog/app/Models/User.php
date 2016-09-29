@@ -35,7 +35,7 @@ class User extends Authenticatable {
 	}
 
 	public function isModerator() {
-		return $this-> id == 1;
+		return $this->is_moderator || $this->is_admin;
 	}
 
 }
