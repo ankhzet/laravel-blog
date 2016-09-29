@@ -22,11 +22,11 @@
 			</div>
 
 			<div class="panel-body">
-				@if ($detailed ?? false)
-					<p class="content">{{ $post->content }}</p>
-				@else
-					<p class="content">{{ preg_replace('/\.*[^\.?!]*$/', '', substr($post->content, 0, 300)) }}...</p>
+				@if (($length = strlen($text = $post->content)) && (!($detailed ?? false)) && ($length != strlen($trimmed = trim_text($text, 300, ''))))
+					<p class="content">{!! preprocess_text($trimmed) !!}</p>
 					<p><a href="{{ route('posts.show', $post) }}">Read more</a></p>
+				@else
+					<p class="content">{!! preprocess_text($text) !!}</p>
 				@endif
 			</div>
 

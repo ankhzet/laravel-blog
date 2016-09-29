@@ -3,9 +3,9 @@
 	<div class="col-sm-2">
 		<a href="{{ route('users.show', $comment->user) }}">{{ $comment->user->name }}</a>
 	</div>
-	<div class="col-sm-10 content">{!! join(array_map(function ($line) {
-		return "<p>" . htmlspecialchars($line) . "</p>";
-	}, explode(PHP_EOL, trim($comment->content)))) !!}</div>
+	<div class="col-sm-10 content">{!!
+		preprocess_text($comment->content)
+	!!}</div>
 </div>
 
 <div class="row">
