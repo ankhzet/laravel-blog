@@ -2,15 +2,15 @@
 
 ## Installation Instructions
 
-1) Clone/download this repository
-2) Pull app dependencies via composer:
+1. Clone/download this repository
+2. Pull app dependencies via composer:
 
         $ cd blog/blog
         $ composer install
         $ chmod -R a+rw storage
         $ chmod -R a+rw bootstrap/cache
 
-3) Configure database:
+3. Configure database:
 
         $ sudo mysql
         mysql> CREATE USER 'ankh'@'localhost' IDENTIFIED BY 'ankh';
@@ -19,15 +19,15 @@
         mysql> GRANT ALL PRIVILEGES ON ankh_db . * TO 'ankh'@'localhost';
         mysql> FLUSH PRIVILEGES;
 
-4) Create all required database tables and seed them with data with artisan:
+4. Create all required database tables and seed them with data with artisan:
 
         $ php artisan migrate --seed
 
-5) Run server:
+5. Run server:
 
         $ php artisan serve --port=8000
 
-6) Open application in browser:
+6. Open application in browser:
 
         $ open http://localhost:8000
 
