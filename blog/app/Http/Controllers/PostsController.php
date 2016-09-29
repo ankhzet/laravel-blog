@@ -10,13 +10,16 @@ use Blog\Post;
 
 class PostsController extends Controller {
 
+	const PER_PAGE = 5;
+
 	/**
 	 * Shows specified posts list page.
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return $this->innerView('index', ['posts' => Post::all()]);
+		$posts = Post::paginate($this::PER_PAGE);
+		return $this->innerView('index', compact('posts'));
 	}
 
 	/**
