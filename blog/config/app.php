@@ -184,6 +184,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
         Blog\Providers\BladeServiceProvider::class,
+        Blog\Providers\HelperServiceProvider::class,
 
     ], (!$isDebug) ? [] : [
         /*
