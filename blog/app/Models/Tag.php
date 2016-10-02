@@ -17,4 +17,13 @@ class Tag extends Entity {
 		return $this->belongsToMany(Post::class, 'posts_tags');
 	}
 
+	/**
+	 * Get the route key for the model.
+	 *
+	 * @return string
+	 */
+	public function getRouteKeyName() {
+		return 'name';
+	}
+
 }
