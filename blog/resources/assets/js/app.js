@@ -1,8 +1,11 @@
 
+// = require jquery.js
 // = require jquery-ui.min.js
 
 // = require jquery.caret.min.js
 // = require jquery.tag-editor.min.js
+
+// = require bootstrap.js
 
 // = require alertify.js
 

@@ -52,8 +52,6 @@
 			</div>
 		</div>
 
-		{!! asset_link('jquery.js') !!}
-		{!! asset_link('bootstrap.js') !!}
 		{!! asset_link('app.js') !!}
 
 	</body>
