@@ -8,10 +8,6 @@ class EntityRequest extends AuthorizableRequest {
 
 	protected $routeParameter = 'id';
 
-	public function rules() {
-		return [];
-	}
-
 	public function data() {
 		$data = $this->all();
 		return array_except($data, array_filter(array_keys($data), function ($key) {

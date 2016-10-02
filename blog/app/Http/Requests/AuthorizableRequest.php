@@ -9,4 +9,8 @@ use Blog\Http\Requests\Authorizable\AuthorizableTrait;
 class AuthorizableRequest extends FormRequest {
 	use AuthorizableTrait;
 
+	public function rules() {
+		return [];
+	}
+
 }
