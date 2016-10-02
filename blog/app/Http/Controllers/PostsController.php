@@ -78,8 +78,10 @@ class PostsController extends Controller {
 	 */
 	public function update(UpdateRequest $request) {
 		$post = $request->candidate();
-		if ($post->update($request->data()))
+		$tags = $request->tags();
+		if ($post->update($request->data()) && $post->tags()->sync($tags)) {
 			return $this->innerRedirect('show', $post);
+		}
 
 		return $this->backRedirect('Failed to update post');
 	}
