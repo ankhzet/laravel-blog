@@ -4,7 +4,7 @@ namespace Blog\Http\Requests;
 
 use Blog\Entity;
 
-class EntityRequest extends LoginedUserRequest {
+class EntityRequest extends AuthorizableRequest {
 
 	protected $routeParameter = 'id';
 

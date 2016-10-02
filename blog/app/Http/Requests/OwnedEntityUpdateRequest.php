@@ -2,10 +2,12 @@
 
 namespace Blog\Http\Requests;
 
+use Blog\OwnedEntity;
+
 class OwnedEntityUpdateRequest extends EntityRequest {
 
-	public function authorize() {
-		$invoker = parent::authorize();
+	public function authorizeModelOwnedByInvoker() {
+		$invoker = $this->invoker();
 		if (!$invoker)
 			return false;
 
@@ -25,6 +27,10 @@ class OwnedEntityUpdateRequest extends EntityRequest {
 			$entity->user_id = $this->invoker()->id;
 		}
 		return $entity;
+	}
+
+	public function entityClass() {
+		return OwnedEntity::class;
 	}
 
 }
