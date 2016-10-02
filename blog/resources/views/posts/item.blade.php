@@ -76,7 +76,7 @@
 				@endif
 
 				{{-- 'Tags: enum' row if post has assigned tags --}}
-				@if ($tags = $post->tags)
+				@if (($tags = $post->tags) && ($tags->count()))
 					<div class="row">
 						<div class="col-sm-12">
 							@include('posts.tags', compact('tags'))
