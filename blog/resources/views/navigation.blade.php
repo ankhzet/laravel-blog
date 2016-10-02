@@ -25,26 +25,35 @@
 						</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-					@if ($user = Auth::user())
-						@if ($user->isModerator())
+						@if ($user = Auth::user())
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 									@ {{ $user->name }} <span class="caret">
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="{{ route('users.show', $user) }}">Profile</a></li>
+									<li><a href="{{ route('users.show', $user) }}">
+										<span class="glyphicon glyphicon-user"></span>
+										Profile
+									</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="{{ route('posts.create') }}">New post</a></li>
+									@if ($user->isModerator())
+										<li><a href="{{ route('posts.create') }}">
+											<span class="glyphicon glyphicon-plus"></span>
+											New post
+										</a></li>
+										<li><a href="{{ route('users.index') }}">
+											<span class="glyphicon glyphicon-cog"></span>
+											User access rights
+										</a></li>
+										<li role="separator" class="divider"></li>
+									@endif
+									<li><a href="{{ route('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 								</ul>
 							</li>
 						@else
-							<li><a href="{{ route('users.show', $user) }}">@ {{ $user->name }}</a></li>
+							<li><a href="{{ route('users.login-form') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							<li><a href="{{ route('users.registration-form') }}">Register</a></li>
 						@endif
-						<li><a href="{{ route('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-					@else
-						<li><a href="{{ route('users.login-form') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li><a href="{{ route('users.registration-form') }}">Register</a></li>
-					@endif
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
