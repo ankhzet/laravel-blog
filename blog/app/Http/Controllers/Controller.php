@@ -15,7 +15,7 @@ class Controller extends BaseController {
 	 */
 
 	protected function name() {
-		return strtolower(str_replace('Controller', '', array_last(explode('\\', get_class($this)))));
+		return strtolower(str_replace('Controller', '', class_basename(get_class($this))));
 	}
 
 	public function innerRedirect($action, $params = []) {
