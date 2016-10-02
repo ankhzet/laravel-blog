@@ -11,18 +11,15 @@ $factory->define(Blog\User::class, function (Faker\Generator $faker) {
 	];
 });
 
-$factory->define(Blog\Post::class, function (Faker\Generator $faker, array $data) {
+$factory->define(Blog\Post::class, function (Faker\Generator $faker) {
 	return [
-		'user_id' => $data['user_id'] ?? 0,
 		'title' => $faker->sentence,
 		'content' => $faker->text(1000),
 	];
 });
 
-$factory->define(Blog\Comment::class, function (Faker\Generator $faker, array $data) {
+$factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
 	return [
-		'post_id' => $data['post_id'] ?? 0,
-		'user_id' => $data['user_id'] ?? 0,
 		'content' => $faker->text(500),
 	];
 });
