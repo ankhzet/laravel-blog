@@ -23,4 +23,8 @@
 
 	Route::get('posts/{post}#comments', ['as' => 'comments.index', 'uses' => 'PostsController@show']);
 	Route::get('posts/{post}#comment{comment}', ['as' => 'comments.show', 'uses' => 'PostsController@show']);
+
+	// tags
+	Route::resource('tags', 'TagsController');//, ['only' => ['store', 'destroy']]);
+	Route::get('tags/{tag}/delete', ['as' => 'tags.destroy', 'uses' => 'TagsController@destroy']);
 	Route::get('tags/{tag}', ['as' => 'tags.show', 'uses' => 'PostsController@tagFilter']);

@@ -19,6 +19,10 @@
 							<span class="glyphicon glyphicon-list"></span>
 							Posts
 						</a></li>
+						<li><a href="{{ route('tags.index') }}">
+							<span class="glyphicon glyphicon-tags"></span>
+							Tags
+						</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 					@if ($user = Auth::user())

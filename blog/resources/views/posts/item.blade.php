@@ -75,6 +75,15 @@
 					@endif
 				@endif
 
+				{{-- 'Tags: enum' row if post has assigned tags --}}
+				@if ($tags = $post->tags)
+					<div class="row">
+						<div class="col-sm-12">
+							@include('posts.tags', compact('tags'))
+						</div>
+					</div>
+				@endif
+
 			</div> {{-- .panel-footer --}}
 		</div> {{-- .panel --}}
 	</div> {{-- .post --}}
