@@ -9,6 +9,9 @@
 	Route::get('/registration', ['as' => 'users.registration-form', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
 	Route::post('/registration', ['as' => 'users.register', 'uses' => 'Auth\RegisterController@register']);
 
+	Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
+	Route::post('admin/grant', ['as' => 'users.grant-rights', 'uses' => 'UsersController@grantRights']);
+	Route::get('users/{user}/delete', ['as' => 'users.destroy', 'uses' => 'UsersController@destroy']);
 
 	Route::get('admin/login', ['as' => 'users.admin-login-form', 'uses' => 'Auth\LoginController@showAdminLoginForm']);
 	Route::post('admin/login', ['as' => 'users.admin-login-form', 'uses' => 'Auth\LoginController@login']);
