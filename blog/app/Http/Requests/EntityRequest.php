@@ -4,13 +4,9 @@ namespace Blog\Http\Requests;
 
 use Blog\Entity;
 
-class EntityRequest extends LoginedUserRequest {
+class EntityRequest extends AuthorizableRequest {
 
 	protected $routeParameter = 'id';
-
-	public function rules() {
-		return [];
-	}
 
 	public function data() {
 		$data = $this->all();

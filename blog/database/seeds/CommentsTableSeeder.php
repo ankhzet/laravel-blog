@@ -12,9 +12,8 @@ class CommentsTableSeeder extends Seeder {
 	public function run() {
 		$users = Blog\User::all();
 		foreach (Blog\Post::all() as $post) {
-
 			factory(Blog\Comment::class, rand(0, 10))
-				->create(['post_id' => $post->id])
+				->create(['post_id' => $post->id, 'user_id' => 0])
 				->each(function($comment) use ($users) {
 					$users->random()->comments()->save($comment);
 				});

@@ -4,9 +4,11 @@ namespace Blog;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable {
 	use Notifiable;
+	use SoftDeletes;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -26,6 +28,14 @@ class User extends Authenticatable {
 		'password', 'remember_token',
 	];
 
+	public function delete() {
+		return $this->posts()->delete() && parent::delete();
+	}
+
+	public function restore() {
+		return $this->posts()->restore() && parent::restore();
+	}
+
 	public function posts() {
 		return $this->hasMany(Post::class, 'user_id');
 	}
@@ -35,7 +45,7 @@ class User extends Authenticatable {
 	}
 
 	public function isModerator() {
-		return $this-> id == 1;
+		return $this->is_moderator || $this->is_admin;
 	}
 
 }

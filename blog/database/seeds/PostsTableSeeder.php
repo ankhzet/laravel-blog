@@ -13,8 +13,7 @@ class PostsTableSeeder extends Seeder {
 
 		$user = Blog\User::first();
 
-		factory(Blog\Post::class, 25)->create(['user_id' => $user->id])->each(function($post) use ($user) {
-		});
+		factory(Blog\Post::class, 25)->create(['user_id' => $user->id]);
 
 	}
 

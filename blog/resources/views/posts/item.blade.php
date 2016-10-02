@@ -22,11 +22,11 @@
 			</div>
 
 			<div class="panel-body">
-				@if ($detailed ?? false)
-					<p class="content">{{ $post->content }}</p>
-				@else
-					<p class="content">{{ preg_replace('/\.*[^\.?!]*$/', '', substr($post->content, 0, 300)) }}...</p>
+				@if (($length = strlen($text = $post->content)) && (!($detailed ?? false)) && ($length != strlen($trimmed = trim_text($text, 300, ''))))
+					<p class="content">{!! preprocess_text($trimmed) !!}</p>
 					<p><a href="{{ route('posts.show', $post) }}">Read more</a></p>
+				@else
+					<p class="content">{!! preprocess_text($text) !!}</p>
 				@endif
 			</div>
 
@@ -73,6 +73,15 @@
 							</div>
 						</div>
 					@endif
+				@endif
+
+				{{-- 'Tags: enum' row if post has assigned tags --}}
+				@if (($tags = $post->tags) && ($tags->count()))
+					<div class="row">
+						<div class="col-sm-12">
+							@include('posts.tags', compact('tags'))
+						</div>
+					</div>
 				@endif
 
 			</div> {{-- .panel-footer --}}
