@@ -30,4 +30,8 @@ class Post extends OwnedEntity {
 		return $this->hasMany(Comment::class, 'post_id');
 	}
 
+	public function tags() {
+		return $this->belongsToMany(Tag::class, 'posts_tags');
+	}
+
 }

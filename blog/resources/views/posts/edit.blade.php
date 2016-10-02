@@ -22,6 +22,14 @@
 			@endlabeled
 		@enderrorable
 
+		@errorable($errors, 'tags')
+			@labeled('tags', 'Tags')
+				{{ Form::text('tags', join(', ', array_map(function ($tag) {
+					return $tag->name;
+				}, $post->tags->all())) ?? '', ['placeholder' =>  'Post associated tags', 'class' => 'form-control', 'id' => 'tags-input']) }}
+			@endlabeled
+		@enderrorable
+
 		@group()
 			@labeled
 				{{ Form::submit('Save', array('class' => 'btn btn-primary')) }}
