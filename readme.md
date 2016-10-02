@@ -37,31 +37,32 @@
 * 0.0 Application skeleton
 * 0.1 Added Users, Posts, Comments
 * 0.2 Added posts pagination
+* 0.3 Added tags, added users moderation
 
 ## Progress
 
-- [ ] Users
+- [x] Users
 	- [x] Creation
-	- [ ] Registration form
+	- [x] Registration form
 	- [x] Login/logout
 		- [x] Common user login page
 		- [x] Admin login page
-	- [ ] Roles
-		- [ ] Roles moderation
-- [ ] Posts
+	- [x] Roles
+		- [x] Roles moderation
+- [x] Posts
 	- [x] Creation
 	- [x] Update
 	- [x] Deletion
-	- [ ] Display
+	- [x] Display
 		- [x] Enumeration
 		- [x] Pagination
-		- [ ] Filtering by tags
+		- [x] Filtering by tags
 - [x] Comments
 	- [x] Creation
 	- [x] Deletion
-- [ ] Tags
-	- [ ] Assignment on post creation
-	- [ ] Display
+- [x] Tags
+	- [x] Assignment on post creation
+	- [x] Display
 
 ## License
 
