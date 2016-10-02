@@ -17,15 +17,17 @@
 				</h3>
 			</div>
 
-			<div class="panel-body">
-				{!! preprocess_text($tag->annotation) !!}
-			</div>
+			@if ($tag->annotation)
+				<div class="panel-body">
+					{!! preprocess_text($tag->annotation) !!}
+				</div>
+			@endif
 
 			<div class="panel-footer">
 				<div class="row">
 
 					<div class="col-sm-8 col-xs-7">
-						<span class="glyphicon glyphicon-tags"></span>
+						<span class="glyphicon glyphicon-list"></span>
 						&nbsp; Posts:
 						<a href="{{ route('tags.show', $tag) }}">
 							{{ $tag->posts()->count() }}
