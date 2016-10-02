@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Blog\Http\Requests\Post\UpdateRequest;
 use Blog\Http\Requests\Post\DeleteRequest;
 use Blog\Post;
+use Blog\Tag;
 
 class PostsController extends Controller {
 
@@ -17,8 +18,12 @@ class PostsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index() {
-		$posts = Post::paginate($this::PER_PAGE);
+	public function index($posts = null) {
+		if (!$posts)
+			$posts = Post::paginate($this::PER_PAGE);
+		else
+			$posts = $posts->paginate($this::PER_PAGE);
+
 		return $this->innerView('index', compact('posts'));
 	}
 
@@ -95,6 +100,10 @@ class PostsController extends Controller {
 		return $post->delete()
 			? $this->innerRedirect('index')
 			: $this->backRedirect('Failed to delete post');
+	}
+
+	public function tagFilter(Tag $tag) {
+		return $this->index($tag->posts());
 	}
 
 }

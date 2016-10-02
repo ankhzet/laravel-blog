@@ -14,6 +14,12 @@ class TagsTableSeeder extends Seeder {
 	public function run() {
 		factory(Blog\Tag::class, rand(10, 50))
 			->create();
+
+		$posts = Blog\Post::all();
+		$tags = Blog\Tag::all();
+		foreach ($tags as $tag) {
+			$tag->posts()->attach($posts->random(rand(3, 10)));
+		}
 	}
 
 }
