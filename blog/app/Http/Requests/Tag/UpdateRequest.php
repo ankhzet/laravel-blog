@@ -2,10 +2,13 @@
 
 namespace Blog\Http\Requests\Tag;
 
+use Blog\Http\Requests\Authorizable\ModeratorTrait;
+
 use Blog\Http\Requests\EntityRequest;
 use Blog\Tag;
 
 class UpdateRequest extends EntityRequest {
+	use ModeratorTrait;
 
 	protected $routeParameter = 'tag';
 
