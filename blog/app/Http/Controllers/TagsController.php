@@ -17,7 +17,10 @@ class TagsController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index() {
+	public function index(Request $request) {
+		if ($request->ajax())
+			return response()->json(Tag::all(['id', 'name']));
+
 		$tags = Tag::paginate($this::PER_PAGE);
 		return $this->innerView('index', compact('tags'));
 	}
@@ -50,9 +53,15 @@ class TagsController extends Controller {
 	public function store(UpdateRequest $request) {
 		$tag = $request->candidate();
 		if ($tag->save())
-			return $this->innerRedirect('show', $tag);
+			if ($request->ajax())
+				return response()->json(['id' => $tag->id, 'name' => $tag->name]);
+			else
+				return $this->innerRedirect('show', $tag);
 
-		return $this->backRedirect('Failed to save tag');
+		if ($request->ajax())
+			return response()->json(['error' => 'Failed to save tag']);
+		else
+			return $this->backRedirect('Failed to save tag');
 	}
 
 	/**
