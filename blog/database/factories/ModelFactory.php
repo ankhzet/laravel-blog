@@ -23,3 +23,14 @@ $factory->define(Blog\Comment::class, function (Faker\Generator $faker) {
 		'content' => $faker->text(500),
 	];
 });
+
+$factory->define(Blog\Tag::class, function (Faker\Generator $faker) {
+	$name = $faker->word;
+	while ((strlen($name) <= 2) || Blog\Tag::where('name', $name)->count())
+		$name = $faker->word;
+
+	return [
+		'name' => $name,
+		'annotation' => $faker->text(200),
+	];
+});
